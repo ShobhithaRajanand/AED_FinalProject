@@ -38,7 +38,13 @@ public class Employee {
         this.empName = empName;
     }
 
-    
+    public String getEmpRole() {
+        return empRole;
+    }
+
+    public void setEmpRole(String empRole) {
+        this.empRole = empRole;
+    }
 
     @Override
     public String toString() {

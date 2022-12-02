@@ -28,7 +28,25 @@ public class Enterprise extends Organization {
 
     // setting enums for enterprise types
     public enum EnterpriseType {
-        
+        Hospital("Hospital"),
+        Lab("Testing Laboratory"),
+        Campaign("Camp Awareness"),
+        Funding("Funding");
+
+        private final String value;
+
+        private EnterpriseType(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return value;
+        }
     }
 
     public Enterprise(String name, EnterpriseType enterpriseType) {

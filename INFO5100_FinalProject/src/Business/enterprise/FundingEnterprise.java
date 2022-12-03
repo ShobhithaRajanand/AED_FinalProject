@@ -20,6 +20,6 @@ public class FundingEnterprise extends Enterprise {
 
     @Override
     public ArrayList<Role> getSupportedRole() {
-        
+        return null;
     }
 }

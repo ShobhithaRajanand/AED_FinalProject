@@ -11,6 +11,7 @@ import java.util.Date;
  *
  * @author aditi
  */
+//campaign 
 public class CampaignEvent {
     
     String campaignName;

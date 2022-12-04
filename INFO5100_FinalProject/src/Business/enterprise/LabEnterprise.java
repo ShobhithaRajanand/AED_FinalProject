@@ -18,6 +18,8 @@ public class LabEnterprise extends Enterprise {
         super(name, Enterprise.EnterpriseType.Lab);
     }
 
-    
+    @Override
+    public ArrayList<Role> getSupportedRole() {
+        return null;
     }
 }

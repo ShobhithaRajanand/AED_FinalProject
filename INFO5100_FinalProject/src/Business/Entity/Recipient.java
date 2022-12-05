@@ -11,10 +11,52 @@ package Business.Entity;
  */
 public class Recipient extends Person implements Comparable<Recipient>{
 
-    @Override
-    public int compareTo(Recipient o) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    private int priorityNo;
+    private String organType;
+    boolean isDocAssigned;
+    String docAssignedEmaild;
+
+    public String getDocAssignedEmaild() {
+        return docAssignedEmaild;
     }
+
+    public void setDocAssignedEmaild(String docAssignedEmaild) {
+        this.docAssignedEmaild = docAssignedEmaild;
+    }
+    
+    public boolean isIsDocAssigned() {
+        return isDocAssigned;
+    }
+
+    public void setIsDocAssigned(boolean isDocAssigned) {
+        this.isDocAssigned = isDocAssigned;
+    }
+  
+    public void setPriorityNo(int priorityNo) {
+        this.priorityNo = priorityNo;
+    }
+    
+    public int getPriorityNo() {
+        return priorityNo;
+    }
+
+    public void setOrganType(String organType) {
+        this.organType = organType;
+    }
+    
+        public String getOrganType() {
+        return organType;
+    }
+        
+    @Override
+    public String toString() {
+        return this.getPersonEmailId().trim();
+    }
+
+    
+    public int compareTo(Recipient o) {
+		return Integer.compare(o.getPriorityNo(), this.getPriorityNo());
+	}
     
     
 }

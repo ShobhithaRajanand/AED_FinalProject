@@ -24,7 +24,7 @@ import javax.swing.JPanel;
 public class MainJFrame extends javax.swing.JFrame {
     
     public EcoSystem ecoSystem;
-    
+    private DB4OUtil dB4OUtilObj = DB4OUtil.getInstance();
     static Logger log = Logger.getLogger(MainJFrame.class.getName());  
 
     /**
@@ -32,7 +32,7 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     public MainJFrame() {
         initComponents();
-        
+        this.ecoSystem = dB4OUtilObj.retrieveSystem();;
     }
 
     /**
@@ -186,14 +186,63 @@ public class MainJFrame extends javax.swing.JFrame {
         Enterprise inEnterprise = null;
 
 
+        if (account == null) {
+            //Step 1: Go inside each network and check every enterprise
+            for (Network network : ecoSystem.getNetworks()) {
+                //Step 2: check against each enterprise
+                for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                    account = enterprise.getUserAccountDirectory().authenticateUser(usernameVal, passwordVal);
+                    if (account == null) {
+                        //Step 3:check against each organization for each enterprise
+                        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                            account = org.getUserAccountDirectory().authenticateUser(usernameVal, passwordVal);
+                            if (account != null) {
+                                inEnterprise = enterprise;
+                                inOrg = org;
+                                break;
+                            }
+                        }
+
+                    } else {
+                        inEnterprise = enterprise;
+                        break;
+                    }
+                    if (inOrg != null)  break;
+                }
+                if (inEnterprise != null) break;
+            }
+        }
         
-        
-       
+        if (account == null) {
+            JOptionPane.showMessageDialog(null, "User name or password is incorrect");
+            return;
+        } else {
+            CardLayout layout = (CardLayout) rightJPanel.getLayout();
+            rightJPanel.add("workArea", account.getRole().createWorkArea(rightJPanel, account, inOrg, inEnterprise, ecoSystem));
+            layout.next(rightJPanel);
+        }
+
+        // disable controls to login again
+        loginBtn.setEnabled(false);
+        logoutBtn.setEnabled(true);
+        usernameTxt.setEnabled(false);
+        passwordTxt.setEnabled(false);
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
         // TODO add your handling code here:
-        
+        logoutBtn.setEnabled(false);
+        usernameTxt.setEnabled(true);
+        passwordTxt.setEnabled(true);
+        usernameTxt.setText("");
+        passwordTxt.setText("");
+        loginBtn.setEnabled(true);
+        rightJPanel.removeAll();//clearing all the stacked cards after logout
+        JPanel emptyJPanel = new JPanel();
+        rightJPanel.add("empty", emptyJPanel);
+        CardLayout layout = (CardLayout) rightJPanel.getLayout();
+        layout.next(rightJPanel);
+        dB4OUtilObj.storeSystem(ecoSystem);
     }//GEN-LAST:event_logoutBtnActionPerformed
 
     private void usernameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTxtActionPerformed

@@ -5,6 +5,12 @@
  */
 package Business.Role;
 
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Organization.Organization;
+import Business.UserAccount.UserAccount;
+import UI.DoctorWorkspace.DoctorMainPage;
+import UI.DoctorWorkspace.DoctorRequestPatientTestPanel;
 import javax.swing.JPanel;
 
 /**
@@ -13,9 +19,16 @@ import javax.swing.JPanel;
  */
 public class DoctorRole extends Role{
 
-     
+     RoleType roleType = RoleType.DoctorRole;
     
-   
+    @Override
+    public String toString() {
+        return this.roleType.getValue();
+    }
     
+    @Override
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization org, Enterprise enterprise, EcoSystem business) {
+        return new DoctorMainPage(userProcessContainer, enterprise, account, business);    
+    }
   
 }

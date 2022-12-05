@@ -16,5 +16,18 @@ public class PersonDirectory {
     
     //List to store Person Records
     
+    List<Person> personRecord;
+
+    public PersonDirectory() {
+        personRecord = new ArrayList<Person>();
+    }
+
+    public List<Person> getPersonRecord() {
+        return personRecord;
+    }
+
+    public void setPersonRecord(List<Person> personRecord) {
+        this.personRecord = personRecord;
+    }
     
 }

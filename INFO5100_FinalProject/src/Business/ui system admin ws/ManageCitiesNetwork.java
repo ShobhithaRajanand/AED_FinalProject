@@ -222,7 +222,40 @@ public class ManageCitiesNetwork extends javax.swing.JPanel {
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         // TODO add your handling code here:
-       
+        int selectedRow = citiesNetworkTbl.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a city to be updated", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        Network networkToBeChanged = (Network) citiesNetworkTbl.getValueAt(selectedRow, 1);
+        String newNameChanged = (String) citiesNetworkTbl.getValueAt(selectedRow, 0);
+        if (util.notNullOrEmpty(newNameChanged)) {
+            if (newNameChanged.equalsIgnoreCase(networkToBeChanged.getName())) {
+                JOptionPane.showMessageDialog(this, "No change in name detected", "INFO", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            } else {
+                if (util.isValidName(newNameChanged)) {
+                    for (Network network : ecoSystem.getNetworks()) {
+                        if (network.getName().equalsIgnoreCase(newNameChanged)) {
+                            JOptionPane.showMessageDialog(null, "City already exists. Please enter a new city!", "Error", JOptionPane.ERROR_MESSAGE);
+                            createNewCityNetworkTxt.setText("");
+                            return;
+                        }
+                    }
+                    System.out.println("Updating network name from :" + networkToBeChanged.getName() + " to :" + newNameChanged);
+                    networkToBeChanged.setName(newNameChanged);
+                    populateNetworkTable();
+                    dB4OUtilObj.storeSystem(ecoSystem);
+                    JOptionPane.showMessageDialog(null, "Sucessfully updated city network.", "INFO", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please enter a valid city.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Please do not leave city name as empty!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_updateBtnActionPerformed
 
     private void createNewCityNetworkTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createNewCityNetworkTxtActionPerformed

@@ -18,9 +18,17 @@ import javax.swing.JPanel;
  */
 public class CampaignManagerRole extends Role {
     
-   
+    RoleType roleType = RoleType.CampaignManagerRole;
     
+    @Override
+    public String toString() {
+        return this.roleType.getValue();
+    }
     
+    @Override
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization org, Enterprise enterprise, EcoSystem business) {
+        return new AwarenessCampaignInitiator( business, userProcessContainer, enterprise, account);
+    }
 
     
 }

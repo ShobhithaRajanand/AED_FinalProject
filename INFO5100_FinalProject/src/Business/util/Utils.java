@@ -95,7 +95,10 @@ public class Utils {
      
      //Specific to one class only, do not use
      public boolean isValidPhoneNum(String campaign){
-        
+         String regex = "^[1-9]{1}+[0-9]{9}$";
+         Pattern p = Pattern.compile(regex);
+         Matcher m = p.matcher(campaign);
+         return m.matches();
      }
              
      public void sendEmail(String emailID, String campaignName, String campaignDate, String city){         

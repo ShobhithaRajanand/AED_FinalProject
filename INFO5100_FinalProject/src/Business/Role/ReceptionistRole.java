@@ -5,7 +5,11 @@
  */
 package Business.Role;
 
-
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Organization.Organization;
+import Business.UserAccount.UserAccount;
+import UI.HospitalAdminWorkspace.ManageHospitalApplicant;
 import javax.swing.JPanel;
 
 /**
@@ -14,7 +18,17 @@ import javax.swing.JPanel;
  */
 public class ReceptionistRole extends Role{
 
+    RoleType roleType = RoleType.ApplicantRole;
     
+    @Override
+    public String toString() {
+        return this.roleType.getValue();
+    }
+    
+    @Override
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization org, Enterprise enterprise, EcoSystem business) {
+        return new ManageHospitalApplicant(userProcessContainer, org, enterprise,account);
+    }
    
  
 }

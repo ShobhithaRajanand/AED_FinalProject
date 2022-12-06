@@ -14,6 +14,7 @@ import java.util.ArrayList;
  *
  * @author aditi
  */
+//internal lab org
 public class InternalLabOrg extends Organization {
 
     public InternalLabOrg() {

@@ -287,7 +287,37 @@ public class SystemAdminDashboard extends javax.swing.JPanel {
 
     private void analysisBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_analysisBtnActionPerformed
         // TODO add your handling code here:      
-       
+        int counter = 0;
+        
+        for (Network network : ecoSystem.getNetworks()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                    if (organization.getName().equalsIgnoreCase("Applicant Org")) {
+                       
+                        for (Donor donorman : organization.getDonorDirectory().getDonorRecords()) {
+                            counter = counter + 1;
+                        }
+                    }
+                }
+            }
+        }
+
+
+        Frame frames = new Frame();
+
+        DefaultPieDataset pieDataSet = new DefaultPieDataset();
+        pieDataSet.setValue("The Donor is willing to donate!!", counter);
+        pieDataSet.setValue("The Donor is not willing to donate!!", ShowingInterestUI.countReject);
+        
+        JFreeChart charts = ChartFactory.createPieChart("Pie Chart", pieDataSet, true, true, true);
+
+        ChartPanel chartPanel = new ChartPanel(charts);
+        frames.add(chartPanel);
+
+        frames.pack();
+        frames.setVisible(true);
+        chartPanel.setSize(600, 600);
+        chartPanel.setVisible(true);
 
     }//GEN-LAST:event_analysisBtnActionPerformed
 

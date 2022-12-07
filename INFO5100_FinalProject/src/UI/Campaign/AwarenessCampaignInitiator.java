@@ -698,7 +698,29 @@ public class AwarenessCampaignInitiator extends javax.swing.JPanel {
 
     private void declineButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_declineButton3ActionPerformed
         // TODO add your handling code here:
-      
+        int selectedRow = awarenessCampRequestsDetailsTbl.getSelectedRow();
+
+        if(awarenessCampRequestsDetailsTbl.getRowCount() == 0){
+            JOptionPane.showMessageDialog(null, "No rows available to select", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        if (selectedRow < 0){
+            JOptionPane.showMessageDialog(null, "Please select a row", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        AwarenessWorkRequest request = (AwarenessWorkRequest)awarenessCampRequestsDetailsTbl.getValueAt(selectedRow, 0);
+        if( request.getStatus().equalsIgnoreCase("Approved") || request.getStatus().equalsIgnoreCase("Declined")){
+            JOptionPane.showMessageDialog(null, "The request has already been Approved/Declined", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }else if(request.getStatus().equalsIgnoreCase("Sent")){
+            JOptionPane.showMessageDialog(null, "Please assign the request first!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }else if(request.getStatus().equalsIgnoreCase("Assigned")){
+           request.setStatus("Declined"); 
+           JOptionPane.showMessageDialog(null, "The request has been Declined successfully!!");
+        populatecampTable();
+        }
 
     }//GEN-LAST:event_declineButton3ActionPerformed
 

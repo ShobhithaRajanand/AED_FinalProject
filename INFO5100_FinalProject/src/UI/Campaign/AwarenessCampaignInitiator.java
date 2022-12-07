@@ -32,7 +32,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author aditi
+ * @author Amit
  */
 public class AwarenessCampaignInitiator extends javax.swing.JPanel {
 
@@ -60,15 +60,57 @@ public class AwarenessCampaignInitiator extends javax.swing.JPanel {
     }
     
     public void populatecampTable(){
+        DefaultTableModel dtm = (DefaultTableModel)awarenessCampRequestsDetailsTbl.getModel();
+        dtm.setRowCount(0);
+        
+        for (Network network1 : ecoSystem.getNetworks()) {
+            for (Enterprise enterprise : network1.getEnterpriseDirectory().getEnterpriseList()) {
+                if(enterprise instanceof HospitalEnterprise){
+                    for(WorkRequest wr : enterprise.getWorkQueue().getWorkRequestList()){
+                        if (wr instanceof AwarenessWorkRequest) {
+                        Object[] row = new Object[4];
+                        
+                        AwarenessWorkRequest req = (AwarenessWorkRequest)wr;
+                        row[0] = wr;
+                        row[1] = req.getOrgans();
+                        row[2] = wr.getStatus();
+                        row[3] = wr.getSender();
+                
+                        dtm.addRow(row);
+                    }
+                    }
+                }
+            }
+
+        }
+
     }
     public void populateEventTable(){
         
+        DefaultTableModel dtm = (DefaultTableModel)upcomingEventDetailsTbl.getModel();
+        dtm.setRowCount(0);
         
+        if(ecoSystem != null && ecoSystem.getCampaignList() != null){
+            for(CampaignEvent campaign : ecoSystem.getCampaignList()){
+                Object[] row = new Object[4];
+                row[0] = campaign.getCampaignName();
+                row[1] = campaign.getNetworkName();
+                row[2] = campaign.getDate();
+                row[3] = campaign.getMoney();
+                
+                dtm.addRow(row);
+            }
+            
+        }
+        dB4OUtilObj.storeSystem(ecoSystem);
     }
     
     public void populateNetworkList(){
         
-        
+        selectCityDropdown.removeAllItems();
+        for(Network networkName : ecoSystem.getNetworks()){
+            selectCityDropdown.addItem(networkName);
+        }
     }
 
     /**

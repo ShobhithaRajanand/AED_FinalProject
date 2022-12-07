@@ -276,7 +276,38 @@ public class ManageEnterpriseAdminDash extends javax.swing.JPanel {
 
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // TODO add your handling code here:
+        System.out.println("Validating Enterprise Admin Credentials");
+        Utils util = new Utils();
+        Enterprise enterpriseObj = (Enterprise) enterpriseDropdown.getSelectedItem();
+        String emailId = emailTxt.getText();
+        String password = String.valueOf(passwordTxt.getPassword());
+
+        if (!(util.notNullOrEmpty(password) || util.notNullOrEmpty(emailId))) {
+            JOptionPane.showMessageDialog(null, "Please enter emailId and password");
+            return;
+        }
+        if (!util.isPasswordValid(password)) {
+            JOptionPane.showMessageDialog(null, "Please enter a valid password. (Minimum eight characters, at least one uppercase letter, one lowercase letter and one number)");
+            return;
+        }
+        if (!util.isEmaildIdvalid(emailId)) {
+            JOptionPane.showMessageDialog(null, "Please enter a valid email id.");
+            return;
+        }
+        
+        if(enterpriseObj.getEmployeeDirectory().getEmpList().size() > 0){
+            JOptionPane.showMessageDialog(null, "Enterprise admin already exists");
+            return;
+        }
+        Employee employee = enterpriseObj.getEmployeeDirectory().createEmployee(emailId);
+        UserAccount account = enterpriseObj.getUserAccountDirectory().createUserAccount(emailId, password, employee, new EnterpriseManagerRole());
        
+        System.out.println("Successfully created enterprise admin useraccount for emailId :"+emailId);
+        
+        emailTxt.setText("");
+        passwordTxt.setText("");
+
+        populateEnterpriseTable();
     }//GEN-LAST:event_submitBtnActionPerformed
 
 

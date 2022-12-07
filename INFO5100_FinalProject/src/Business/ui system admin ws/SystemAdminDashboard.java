@@ -83,6 +83,7 @@ public class SystemAdminDashboard extends javax.swing.JPanel {
                 }
             }
         }
+        
         model.reload();
     }
 

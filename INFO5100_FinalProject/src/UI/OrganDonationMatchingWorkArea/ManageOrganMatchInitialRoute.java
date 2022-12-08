@@ -26,6 +26,7 @@ import javax.swing.JPanel;
  *
  * @author Aditi
  */
+//organ match work area
 public class ManageOrganMatchInitialRoute extends javax.swing.JPanel {
 
     EcoSystem ecoSystem;
@@ -167,12 +168,37 @@ public class ManageOrganMatchInitialRoute extends javax.swing.JPanel {
     }//GEN-LAST:event_matchOrganByRecipientSeverityBtnActionPerformed
 
     private List<Recipient> createRecipientsList(){
+        List<Recipient> recipientL = new ArrayList<Recipient>();
         
+        for (Network network : ecoSystem.getNetworks()) {
+            for (Enterprise ents : network.getEnterpriseDirectory().getEnterpriseList()) {
                 
-            
+                if(ents instanceof HospitalEnterprise){
+                    for(Organization organization : ents.getOrganizationDirectory().getOrganizationList()){
+                        if(organization.getName().equals("Applicant Org")){
+                            for( Recipient recp : organization.getRecipientDirectory().getRecipientRecords()){
+                                  if(recp.getPriorityNo() > 0){
+                                      recp.setNetwork(network.getName());
+                                      recipientL.add(recp);
+                                  }
+                            }
+                        }
+                    }
+                }
+                
+            }
         }
         
-       
+       // List<Map.Entry<String, Recipient>> list = new ArrayList<Map.Entry<String, Recipient>>(recipientList.entrySet());
+        //sort recipient list by their sevirity
+        Collections.sort(recipientL, new Comparator<Recipient>() {
+            @Override
+            public int compare(Recipient recipent1, Recipient recipent2) {
+                return recipent1.compareTo(recipent2);
+            }
+        });
+        
+        return recipientL;
     }
     
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed

@@ -36,6 +36,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author aditi
  */
+//organ donation working area
 public class OrganMatchByDonorPanel extends javax.swing.JPanel {
 
     EcoSystem ecoSystem;
@@ -174,7 +175,18 @@ public class OrganMatchByDonorPanel extends javax.swing.JPanel {
 
     private void findMatchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findMatchBtnActionPerformed
 
-       
+        int selectedRow = donorInfoTbl.getSelectedRow();
+
+        if (selectedRow >= 0) {
+            Donor donorInfo = (Donor) donorInfoTbl.getValueAt(selectedRow, 0);
+            String network = (String) donorInfoTbl.getValueAt(selectedRow, 1);
+            donor = donorInfo;
+            List<String> organsList = donor.getOrganList();
+            populateRecipientToTable(network, organsList);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a row.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
     }//GEN-LAST:event_findMatchBtnActionPerformed
 
     void populateDonortabel() {

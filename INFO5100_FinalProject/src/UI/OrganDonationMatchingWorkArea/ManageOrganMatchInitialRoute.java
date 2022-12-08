@@ -26,7 +26,6 @@ import javax.swing.JPanel;
  *
  * @author Aditi
  */
-//organ match work area
 public class ManageOrganMatchInitialRoute extends javax.swing.JPanel {
 
     EcoSystem ecoSystem;

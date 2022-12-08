@@ -36,7 +36,6 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author aditi
  */
-//organ donation working area
 public class OrganMatchByDonorPanel extends javax.swing.JPanel {
 
     EcoSystem ecoSystem;

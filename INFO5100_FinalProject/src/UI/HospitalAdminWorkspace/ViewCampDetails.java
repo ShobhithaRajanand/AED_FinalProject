@@ -39,10 +39,33 @@ public class ViewCampDetails extends javax.swing.JPanel {
         this.panel = panel;
         this.userAccount = userAccount;
         this.ent = ent;
-       
+        populateStatusTable();
     }
 
-    
+    public void populateStatusTable() {
+        DefaultTableModel dtm = (DefaultTableModel) requestDetailsTbl.getModel();
+        dtm.setRowCount(0);
+
+        for (Network network1 : system.getNetworks()) {
+            for (Enterprise enterprise : network1.getEnterpriseDirectory().getEnterpriseList()) {
+                if (enterprise instanceof HospitalEnterprise) {
+                    for (WorkRequest request : ent.getWorkQueue().getWorkRequestList()) {
+                        if (request instanceof AwarenessWorkRequest) {
+
+                            Object[] row = new Object[4];
+                            row[0] = ((AwarenessWorkRequest) request).getMessage();
+                            row[1] = ((AwarenessWorkRequest) request).getOrgans();
+                            row[2] = ((AwarenessWorkRequest) request).getStatus();
+                            row[3] = ((AwarenessWorkRequest) request).getSender();
+                            dtm.addRow(row);
+                        }
+
+                    }
+                }
+            }
+        }
+
+    }
     //FundingWorkRequest req = new FundingWorkRequest();
 
     /**

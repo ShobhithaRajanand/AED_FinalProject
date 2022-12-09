@@ -58,6 +58,30 @@ public class CheckDonorRecipientRatio extends javax.swing.JPanel {
         int totalRecipeint = 0;
         int totalDonors = 0;
         
+        for (Network n : system.getNetworks()) {
+            for (Enterprise enterprise : n.getEnterpriseDirectory().getEnterpriseList()) {
+                if(enterprise instanceof HospitalEnterprise)
+                {
+                    for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                        if (organization.getName().equalsIgnoreCase("Applicant Org")) 
+                        {
+                            totalRecipeint = organization.getRecipientDirectory().getRecipientRecords().size();
+                            totalDonors = organization.getDonorDirectory().getDonorRecords().size();
+  
+                        }
+                         
+                   }
+                }
+            
+            if(totalRecipeint <= totalDonors){
+                raiseRequestForAwarenessCampaignsBtn.setEnabled(true);
+            }else{
+                raiseRequestForAwarenessCampaignsBtn.setEnabled(false);
+            }         
+        }
+        } 
+        totalDonorCountTxt.setText(String.valueOf(totalDonors));
+        totalRecipientCountTxt.setText(String.valueOf(totalRecipeint));
 
     }
     
@@ -141,7 +165,13 @@ public class CheckDonorRecipientRatio extends javax.swing.JPanel {
         map2.put("Liver", Integer.valueOf(rliver));
         map2.put("Panceras", Integer.valueOf(rpanceras));
 
-        
+        for (String orggans : arrayList) {
+            Object[] rows = new Object[3];
+            rows[0] = orggans;
+            rows[1] = map1.get(orggans);
+            rows[2] = map2.get(orggans);           
+            dtm.addRow(rows);        
+    }
 }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -403,8 +433,51 @@ public class CheckDonorRecipientRatio extends javax.swing.JPanel {
             organs.add(pancreasCheckBox.getText());
         }
         
+        AwarenessWorkRequest req = new AwarenessWorkRequest();
+        req.setMessage("Awarness Campaign Request!");
+        req.setSender(userAccount);
+        req.setStatus("Sent");
+        req.setOrgans(organs);
+        
+        //req.setSender(enterpriseObj.getUserAccountDirectory().getUserAccountList().get(0));
+        //requestObj.setMessage("Awarness Campaign Request!");
+        //requestObj.setStatus("Request Sent");
+
+        ent.getWorkQueue().getWorkRequestList().add(req);
+        JOptionPane.showMessageDialog(null, "Request for awareness camp has been sent!");          
       
-              
+        /*
+        // TODO add your handling code here:
+        int column = 0;
+        int row = jTable1.getSelectedRow();
+        if(row < 1){
+            JOptionPane.showMessageDialog(null, "Please select a row.");
+             return;
+        }
+        String value = jTable1.getModel().getValueAt(row, column).toString();
+        
+        AwarenessWorkRequest req = new AwarenessWorkRequest();
+        req.setMessage("Awarness Camp Required");
+        req.setFrom("Admin");
+        req.setStatus("Sent");
+        req.setOrganType(value);
+        
+       Organization org1 = null;
+         for(Network network : system.getNetworks()){          
+            for(Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()){
+                if(enterprise instanceof CampaignEnterprise){                   
+                    for(Organization org :  enterprise.getOrganizationDirectory().getOrganizationList()){  
+                       if(org instanceof RedCrossAwarenessOrg){
+                           org1 = org; 
+                       }
+                   }
+                }
+            }
+        }
+         if(org1 != null){
+            org1.getWorkQueue().getWorkRequestList().add(req);
+        }
+         */
     }//GEN-LAST:event_raiseRequestForAwarenessCampaignsBtnActionPerformed
 
     private void viewStatusOfRequestedCampainsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewStatusOfRequestedCampainsBtnActionPerformed

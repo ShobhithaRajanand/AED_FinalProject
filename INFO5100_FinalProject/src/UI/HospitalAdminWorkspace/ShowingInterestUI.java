@@ -32,7 +32,17 @@ public class ShowingInterestUI extends javax.swing.JPanel {
     Enterprise enterpriseObj;
     UserAccount account;
     
-    
+    public ShowingInterestUI(JPanel rightJPanel, Organization org, Enterprise enterpriseObj,UserAccount account) {
+        initComponents();
+        this.rightJPanel = rightJPanel;
+        this.org = org;
+        this.enterpriseObj = enterpriseObj;
+        yesRadioBtn.setSelected(false);
+        noRadioBtn.setSelected(false);
+        enterEmailTxt.setText("");
+        this.account = account;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -116,8 +126,42 @@ public class ShowingInterestUI extends javax.swing.JPanel {
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // TODO add your handling code here:
         
-      
-
+        if( yesRadioBtn.isSelected()&& noRadioBtn.isSelected()){
+            JOptionPane.showMessageDialog(null, "Please select either yes or no.");
+            return;
+        }
+        if(enterEmailTxt.getText().equals("")&& yesRadioBtn.isSelected()== false && noRadioBtn.isSelected() == false){
+            JOptionPane.showMessageDialog(null, "Please enter email and choose a valid option.");
+            return;
+        }
+        if(!enterEmailTxt.getText().equals("")){
+            for(Applicant applicant : appDir.getApplicantRecords()){
+                if(applicant.getApplicantEmailId().equals(enterEmailTxt.getText())){
+                   JOptionPane.showMessageDialog(null, "Email already exists. Please register with a new email id!");
+                    return; 
+                }
+        }
+            
+        Utils util = new Utils();
+        if( util.isEmaildIdvalid(enterEmailTxt.getText())){
+            if (yesRadioBtn.isSelected()){
+                appDir.createApplicant(true, enterEmailTxt.getText());
+                DonorRegistrationForm donorReg= new DonorRegistrationForm(rightJPanel, org, enterEmailTxt.getText(), enterpriseObj,account);
+                rightJPanel.add("donorRegistration", donorReg);
+                CardLayout layout = (CardLayout) rightJPanel.getLayout();
+                layout.next(rightJPanel);
+            }
+            else if(noRadioBtn.isSelected()) {
+                appDir.createApplicant(false, enterEmailTxt.getText());
+                JOptionPane.showMessageDialog(null, "Thanks for showing interest!");
+                countReject++;
+                return;
+            }
+        }        
+        else{
+            JOptionPane.showMessageDialog(null, "Please enter a valid email!");
+        }  
+     }
     }//GEN-LAST:event_submitBtnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed

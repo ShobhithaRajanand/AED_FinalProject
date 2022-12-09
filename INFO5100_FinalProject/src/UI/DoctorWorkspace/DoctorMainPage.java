@@ -191,12 +191,35 @@ public class DoctorMainPage extends javax.swing.JPanel {
 
     private void appointRequestToMeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_appointRequestToMeBtnActionPerformed
         // TODO add your handling code here:
-        
+        int selectedRowOfTable = donorValidationWorkRequestsTbl.getSelectedRow();
+        if (selectedRowOfTable < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row to assign to yourself.", "INFO", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        DonorValidationWorkRequest wk = (DonorValidationWorkRequest)donorValidationWorkRequestsTbl.getValueAt(selectedRowOfTable, 0);
+        if(wk.getStatus().equalsIgnoreCase("Request Raised")){
+            if(wk.getReceiver() == null){
+                wk.setReceiver(account);
+                wk.setStatus("Request Processing");
+                Donor donorObj = wk.getDonorObj();
+                donorObj.setDocAssignedEmaild(account.getUsername());
+                donorObj.setIsDocAssigned(true);
+                // refresh validation request table
+                populateDonorValidationReqTable();
+                JOptionPane.showMessageDialog(null, "Donor assigned to you for validation", "INFO", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }else {
+                JOptionPane.showMessageDialog(null, "Request already in process", "INFO", JOptionPane.INFORMATION_MESSAGE);
+                return;
+        }
     }//GEN-LAST:event_appointRequestToMeBtnActionPerformed
 
     private void testingAreaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testingAreaBtnActionPerformed
         // TODO add your handling code here:
-        
+        DoctorRequestPatientTestPanel dbObj = new DoctorRequestPatientTestPanel(rightJPanel, enterprise, account, business);
+        rightJPanel.add("doctorActivity", dbObj);
+        CardLayout layout = (CardLayout) rightJPanel.getLayout();
+        layout.next(rightJPanel);
     }//GEN-LAST:event_testingAreaBtnActionPerformed
 
 

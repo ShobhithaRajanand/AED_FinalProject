@@ -42,7 +42,19 @@ public class DoctorRequestPatientTestPanel extends javax.swing.JPanel {
     EcoSystem business;
 
     void populatePatientIdDropdown() {
-       
+        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            for (Donor donorObj : org.getDonorDirectory().getDonorRecords()) {
+                if (account.getUsername().equalsIgnoreCase(donorObj.getDocAssignedEmaild())) {
+                    donorListDropdown.addItem(donorObj);
+                }
+            }
+            for (Recipient rObj : org.getRecipientDirectory().getRecipientRecords()) {
+                // validate if patient is not assigned to a doctor or assigned to the same doctor
+                if (!rObj.isIsDocAssigned() || account.getUsername().equalsIgnoreCase(rObj.getDocAssignedEmaild())) {
+                    patientListDropdown.addItem(rObj);
+                }
+            }
+        }
     }
 
     public DoctorRequestPatientTestPanel(JPanel rightJPanel, Enterprise enterprise, UserAccount account, EcoSystem business) {
@@ -425,7 +437,27 @@ public class DoctorRequestPatientTestPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_askToTakeTestButtonActionPerformed
 
     private void checkDonorReportsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkDonorReportsBtnActionPerformed
-      
+        List<String> testLists = new ArrayList<>();
+        if (bloodTestCheckbox.isSelected()) {
+            testLists.add("Yes");
+        } else {
+            testLists.add("No");
+        }
+        if (radiologicTestingCheckbox.isSelected()) {
+            testLists.add("Yes");
+        } else {
+            testLists.add("No");
+        }
+        if (chestXrayCheckbox.isSelected()) {
+            testLists.add("Yes");
+        } else {
+            testLists.add("No");
+        }
+        String patientId = ((Donor) donorListDropdown.getItemAt(donorListDropdown.getSelectedIndex())).getPersonEmailId();
+        ActivityAreaForDoctorPanel doctorActivityArea = new ActivityAreaForDoctorPanel(rightJPanel, account, enterprise, patientId, testLists, "Donor");
+        rightJPanel.add("ActivityScreenForDoctor", doctorActivityArea);
+        CardLayout layout = (CardLayout) rightJPanel.getLayout();
+        layout.next(rightJPanel);
 
     }//GEN-LAST:event_checkDonorReportsBtnActionPerformed
 

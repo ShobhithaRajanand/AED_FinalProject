@@ -60,7 +60,29 @@ public class ActivityAreaForDoctorPanel extends javax.swing.JPanel {
         //populateValidateTable();
     }
 
-
+// public void populateValidateTable() {
+//        DefaultTableModel model = (DefaultTableModel) validateWr.getModel();
+//        model.setRowCount(0);
+//        DonorValidationWorkRequest finalObj = null;
+//        for (WorkRequest w : account.getWorkQueue().getWorkRequestList()) {
+//            if (w instanceof DonorValidationWorkRequest) {
+//                DonorValidationWorkRequest a = (DonorValidationWorkRequest) w;
+//                if (patientUserName.equalsIgnoreCase(a.getPatientId())) {
+//                    finalObj = a;
+//                    break;
+//                }
+//            }
+//        }
+//        if (finalObj != null) {
+//            Object[] row = new Object[5];
+//            row[0] = finalObj.getPatientId();
+//            row[1] = finalObj.getSender();
+//            row[2] = finalObj.isReceiverName();
+//            row[3] = finalObj.getStatus();
+//            model.addRow(row);
+//
+//        }
+//    }
 
     public void populateWorkRequestTable() {
         DefaultTableModel model = (DefaultTableModel) labTestsRequestsTable.getModel();
@@ -215,19 +237,53 @@ public class ActivityAreaForDoctorPanel extends javax.swing.JPanel {
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
-        
+        rightJPanel.remove(this);
+        Component[] componentArray = rightJPanel.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        DoctorRequestPatientTestPanel reqPatientLabTestObj = (DoctorRequestPatientTestPanel) component;
+        CardLayout cardLayout = (CardLayout) rightJPanel.getLayout();
+        cardLayout.previous(rightJPanel);
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void markDonorUnfitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_markDonorUnfitBtnActionPerformed
         // TODO add your handling code here:
-        
-        
+        System.out.println("Marking donor as unfit for transplant" + patientUserName);
+        DonorValidationWorkRequest finalObj = null;
+        for (WorkRequest w : enterprise.getWorkQueue().getWorkRequestList()) {
+            if (w instanceof DonorValidationWorkRequest) {
+                DonorValidationWorkRequest a = (DonorValidationWorkRequest) w;
+                if (patientUserName.equalsIgnoreCase(a.getPatientId())) {
+                    finalObj = a;
+                    break;
+                }
+            }
+        }
+        Donor d = finalObj.getDonorObj();
+        d.setIsDonorFitForTransplant(true);
+        finalObj.setStatus("Request Completed");
+        finalObj.setTestResult("Donor Fit");
+        JOptionPane.showMessageDialog(null, "Donor Marked Unfit!");
         //populateValidateTable();
     }//GEN-LAST:event_markDonorUnfitBtnActionPerformed
 
     private void markDonorFitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_markDonorFitBtnActionPerformed
         // TODO add your handling code here:
-        
+        DonorValidationWorkRequest finalObj = null;
+        for (WorkRequest w : enterprise.getWorkQueue().getWorkRequestList()) {
+            if (w instanceof DonorValidationWorkRequest) {
+                DonorValidationWorkRequest a = (DonorValidationWorkRequest) w;
+                if (patientUserName.equalsIgnoreCase(a.getPatientId())) {
+                    finalObj = a;
+                    break;
+                }
+            }
+        }
+        Donor d = finalObj.getDonorObj();
+        d.setIsDonorFitForTransplant(true);
+        finalObj.setStatus("Request Completed");
+        finalObj.setTestResult("Donor Fit");
+        JOptionPane.showMessageDialog(null, "Donor Marked Fit!");
+        //populateValidateTable();
     }//GEN-LAST:event_markDonorFitBtnActionPerformed
 
     private void setPriorityBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setPriorityBtnActionPerformed

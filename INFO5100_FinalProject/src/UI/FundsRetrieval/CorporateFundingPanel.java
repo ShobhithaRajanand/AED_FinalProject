@@ -45,8 +45,27 @@ public class CorporateFundingPanel extends javax.swing.JPanel {
     
     public void populateTable(){
 
+        DefaultTableModel dtm  = (DefaultTableModel)corporateEventFundRaisingDetailsTbl.getModel();
+        dtm.setRowCount(0);
         
-        
+        for(Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){  
+            System.out.println(organization);
+            System.out.println(organization.getWorkQueue().getWorkRequestList());
+            if(organization instanceof CorporateFundOrg){
+            for(WorkRequest req : organization.getWorkQueue().getWorkRequestList()){
+                
+            Object[] row = new Object[4];
+            row[0] = req;
+            row[1] = req.getSender().getEmployee();
+            row[2] = req.getReceiver() == null ? null : req.getReceiver().getEmployee().getEmpName();
+            row[3] = req.getStatus();
+            System.out.println(row[1]);
+            System.out.println(row[2]);
+            System.out.println(row[3]);
+            dtm.addRow(row);
+            }
+        }
+        }
     }
 
     /**
@@ -145,12 +164,64 @@ public class CorporateFundingPanel extends javax.swing.JPanel {
 
     private void appointToMeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_appointToMeBtnActionPerformed
         // TODO add your handling code here:
-        
+        int selectedRow = corporateEventFundRaisingDetailsTbl.getSelectedRow();
+
+        if(corporateEventFundRaisingDetailsTbl.getRowCount() == 0){
+            JOptionPane.showMessageDialog(null, "No rows available to select", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        if (selectedRow < 0){
+            JOptionPane.showMessageDialog(null, "Please select a row", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        WorkRequest request = (WorkRequest)corporateEventFundRaisingDetailsTbl.getValueAt(selectedRow, 0);
+         if(request.getStatus().equalsIgnoreCase("Approved") || request.getStatus().equalsIgnoreCase("Declined")){
+            JOptionPane.showMessageDialog(null, "The funds have alrady been Approved/Declined!!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if(request.getStatus().equalsIgnoreCase("Pending")){
+            JOptionPane.showMessageDialog(null, "Assigned Request cannot be assigned again!!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        request.setReceiver(useraccount);
+        request.setStatus("Pending");
+        if(useraccount.getRole() instanceof CorporateManagerRole){
+            populateTable();
+        }
     }//GEN-LAST:event_appointToMeBtnActionPerformed
 
     private void processBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processBtnActionPerformed
         // TODO add your handling code here:
+        int selectedRow = corporateEventFundRaisingDetailsTbl.getSelectedRow();
+
+        if(corporateEventFundRaisingDetailsTbl.getRowCount() == 0){
+            JOptionPane.showMessageDialog(null, "No rows available to select", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         
+        if (selectedRow < 0){
+            JOptionPane.showMessageDialog(null, "Please select a row", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        FundingWorkRequest request = (FundingWorkRequest)corporateEventFundRaisingDetailsTbl.getValueAt(selectedRow, 0);
+        if(request.getStatus().equalsIgnoreCase("Approved") || request.getStatus().equalsIgnoreCase("Declined")){
+            JOptionPane.showMessageDialog(null, "The funds have alrady been Approved/Declined!!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if(request.getStatus().equalsIgnoreCase("Pending")){
+            request.setFundStatus("Processing");
+        
+        FundsApprovalPanel processWorkRequestJPanel = new FundsApprovalPanel(panel, request, useraccount);
+        panel.add("processWorkRequestJPanel", processWorkRequestJPanel);
+        CardLayout layout = (CardLayout) panel.getLayout();
+        layout.next(panel);
+        }else{
+            JOptionPane.showMessageDialog(null, "Please assign the request first!!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
     }//GEN-LAST:event_processBtnActionPerformed
 
 

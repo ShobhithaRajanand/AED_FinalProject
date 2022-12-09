@@ -22,6 +22,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+//import javax.mail.Message;
+//import javax.mail.Session;
+//import javax.mail.Transport;
+//import javax.mail.internet.InternetAddress;
+//import javax.mail.internet.MimeMessage;
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -174,19 +179,61 @@ public class FundsApprovalPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_requestedFundTxtActionPerformed
 
     private void approveFundsRequestBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_approveFundsRequestBtnActionPerformed
+        if(request.getStatus().equalsIgnoreCase("Approved") || request.getStatus().equalsIgnoreCase("Declined")){
+            JOptionPane.showMessageDialog(null, "The funds have already been Approved/Declined");
+            return;
+        }
         
+        if(requestedFundTxt.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Please enter a comment!");
+            return;
+        }
+        else{
+            
+            try {
+                emailApproved("amit3012yadav@gmail.com");
+
+
+            } catch (Exception ex) {
+                Logger.getLogger(FundsApprovalPanel.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "Error encountered while sending email");
+            }
+            request.setStatus("Approved");
+            JOptionPane.showMessageDialog(null, "Your funds have been approved and email has been sent");
+        }
                                                          
     }//GEN-LAST:event_approveFundsRequestBtnActionPerformed
 
 
     private void declineFundsRequestBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_declineFundsRequestBtnActionPerformed
         // TODO add your handling code here:
-       
+        if(request.getStatus().equalsIgnoreCase("Approved") || request.getStatus().equalsIgnoreCase("Declined")){
+            JOptionPane.showMessageDialog(null, "The funds have already been Approved/Declined");
+            return;
+        }
+        
+        if(requestedFundTxt.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Please enter a comment!");
+            return;
+        }
+        else{
+            try {
+                emailDeclined("amit3012yadav@gmail.com");
+            } catch (Exception ex) {
+                Logger.getLogger(FundsApprovalPanel.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "Error encountered while sending email");
+            }
+            request.setStatus("Declined");
+            JOptionPane.showMessageDialog(null, "Funds have been declined and email has been sent");
+            
+             
         
 
  
         
-    
+    }
         
     }//GEN-LAST:event_declineFundsRequestBtnActionPerformed
 public static void emailDeclined (String recepient) throws Exception {

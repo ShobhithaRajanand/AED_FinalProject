@@ -47,7 +47,23 @@ public class GovtFundingPanel extends javax.swing.JPanel {
     
     public void populateTable(){
         
+        DefaultTableModel dtm  = (DefaultTableModel)trustEventFundRaisingDetailsTbl.getModel();
+        dtm.setRowCount(0);
         
+        for(Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
+            
+            if(organization instanceof TrustFundOrg){
+            
+            for(WorkRequest req : organization.getWorkQueue().getWorkRequestList()){
+            Object[] row = new Object[4];
+            row[0] = req;
+            row[1] = req.getSender().getEmployee();
+            row[2] = req.getReceiver() == null ? null : req.getReceiver().getEmployee().getEmpName();
+            row[3] = req.getStatus();
+            dtm.addRow(row);
+            }
+        }
+        }
     }
 
     /**
@@ -145,7 +161,28 @@ public class GovtFundingPanel extends javax.swing.JPanel {
 
     private void appointToMeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_appointToMeBtnActionPerformed
         // TODO add your handling code here:
-       
+        int selectedRow = trustEventFundRaisingDetailsTbl.getSelectedRow();
+
+        if(trustEventFundRaisingDetailsTbl.getRowCount() == 0){
+            JOptionPane.showMessageDialog(null, "No rows available to select", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        if (selectedRow < 0){
+            JOptionPane.showMessageDialog(null, "Please select a row", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        WorkRequest request = (WorkRequest)trustEventFundRaisingDetailsTbl.getValueAt(selectedRow, 0);
+        if(request.getStatus().equalsIgnoreCase("Pending")){
+            JOptionPane.showMessageDialog(null, "Assigned Request cannot be assigned again!!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        request.setReceiver(useraccount);
+        request.setStatus("Pending");
+        if(useraccount.getRole() instanceof TrustManagerRole){
+            populateTable();
+        }
     }//GEN-LAST:event_appointToMeBtnActionPerformed
 
     private void processBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processBtnActionPerformed

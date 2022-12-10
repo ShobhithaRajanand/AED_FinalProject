@@ -32,7 +32,15 @@ public class DonorRegistrationForm extends javax.swing.JPanel {
     Enterprise enterpriseObj;
     UserAccount account;
     
-  
+    public DonorRegistrationForm(JPanel rightJPanel, Organization org, String emailStr, Enterprise enterpriseObj, UserAccount account) {
+        initComponents();
+        this.rightJPanel = rightJPanel;
+        this.org = org;
+        this.emailStr = emailStr;
+        emailIdTxt.setText(emailStr);
+        this.enterpriseObj = enterpriseObj;
+        this.account = account;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -427,7 +435,9 @@ public class DonorRegistrationForm extends javax.swing.JPanel {
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
-      
+        rightJPanel.remove(this);
+        CardLayout layout = (CardLayout) rightJPanel.getLayout();
+        layout.previous(rightJPanel);
 
     }//GEN-LAST:event_backBtnActionPerformed
 
@@ -440,9 +450,111 @@ public class DonorRegistrationForm extends javax.swing.JPanel {
     }//GEN-LAST:event_emergencyContactNumberTxtActionPerformed
 
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
-       
-   
-
+        String nameAdded = nameTxt.getText();
+        String sexSelected = "";
+        if (maleRadioBtn.isSelected() && femaleRadioBtn.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Please only one gender.");
+            return;
+        }
+         if (organAvailbilityYesRadioBtn.isSelected() && organAvailbilityNoRadioBtn.isSelected()) {
+             JOptionPane.showMessageDialog(null, "Please only one status of organ availability.");
+            return;
+        }
+        
+        if (maleRadioBtn.isSelected()) {
+            sexSelected = maleRadioBtn.getText();
+        }
+        if (femaleRadioBtn.isSelected()) {
+            sexSelected = femaleRadioBtn.getText();
+        }
+        Object bloodGroup = bloodGroupDropdown.getSelectedItem();
+        String addressAdded = addressTxt.getText();
+        String contactNo = contactNumberTxt.getText();
+        String emergencyName = emergencyContactNameTxt.getText();
+        String emergencyNum = emergencyContactNumberTxt.getText();
+        boolean availableNow = false;
+        String sign = digitalSignatureTxt.getText();
+        if (organAvailbilityYesRadioBtn.isSelected()) {
+            availableNow = true;
+        } else if (organAvailbilityNoRadioBtn.isSelected()) {
+            availableNow = false;
+        }
+        List<String> organs = new ArrayList<String>();
+        if (corneasCheckBox.isSelected()) {
+            organs.add(corneasCheckBox.getText());
+        }
+        if (heartCheckBox.isSelected()) {
+            organs.add(heartCheckBox.getText());
+        }
+        if (kidneyCheckBox.isSelected()) {
+            organs.add(kidneyCheckBox.getText());
+        }
+        if (lungsCheckBox.isSelected()) {
+            organs.add(lungsCheckBox.getText());
+        }
+        if (liverCheckBox.isSelected()) {
+            organs.add(liverCheckBox.getText());
+        }
+        if (pancreasCheckBox.isSelected()) {
+            organs.add(pancreasCheckBox.getText());
+        }
+        if (!(organAvailbilityYesRadioBtn.isSelected() || organAvailbilityNoRadioBtn.isSelected())) {
+            JOptionPane.showMessageDialog(null, "Please select whether Organ currently available.");
+            return;
+        }
+        if (nameTxt.equals("") || sexSelected.equals("") || sign.equals("") || emergencyName.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please fill all the fields listed below.");
+            return;
+        }
+        if (!(corneasCheckBox.isSelected() || heartCheckBox.isSelected() || kidneyCheckBox.isSelected()
+                || lungsCheckBox.isSelected() || liverCheckBox.isSelected() || pancreasCheckBox.isSelected())) {
+            JOptionPane.showMessageDialog(null, "Please select the prgan up for donation.");
+            return;
+        }
+        int age = 0;
+        try {
+            age = Integer.parseInt(ageTxt.getText());
+            if (age > 120 || age < 18) {
+                JOptionPane.showMessageDialog(null, "Please enter correct age.");
+                ageTxt.setText("");
+                return;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Please enter age as a numeric.");
+            ageTxt.setText("");
+            return;
+        }
+        Utils util = new Utils();
+        if (!util.isValidName(nameAdded) || !util.isValidName(emergencyName) || !util.isValidName(sign)) {
+            JOptionPane.showMessageDialog(null, "Please enter valid name.");
+            return;
+        }
+        if (!util.isEmaildIdvalid(emailStr)) {
+            JOptionPane.showMessageDialog(null, "Please enter a valid email.");
+            return;
+        }
+        if (!util.isValidPhoneNum(contactNo) || !util.isValidPhoneNum(emergencyNum)) {
+            JOptionPane.showMessageDialog(null, " Please enter a 10 digit valid phone number");
+            return;
+        }
+        if (org != null && org.getDonorDirectory() != null) {
+            Donor donor = org.getDonorDirectory().createDonor(nameAdded, age,addressAdded , (String) bloodGroup, contactNo,
+                    sexSelected, sign, emailStr, emergencyName, emergencyNum, availableNow, organs);
+            
+            DonorValidationWorkRequest requestObj = new DonorValidationWorkRequest();
+            requestObj.setSender(account);
+            requestObj.setMessage("Please Validate Donor");
+            requestObj.setPatientId(emailStr);
+            requestObj.setStatus("Request Raised");
+            requestObj.setDonorObj(donor);
+            enterpriseObj.getWorkQueue().getWorkRequestList().add(requestObj);
+            JOptionPane.showMessageDialog(null, "Thankyou for registering as a donor.");
+            rightJPanel.remove(this);
+            CardLayout layout = (CardLayout) rightJPanel.getLayout();
+            layout.previous(rightJPanel);
+            
+            // raise a work request to doctor org to validate donor
+        }
     }//GEN-LAST:event_registerBtnActionPerformed
 
     private void digitalSignatureTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_digitalSignatureTxtActionPerformed

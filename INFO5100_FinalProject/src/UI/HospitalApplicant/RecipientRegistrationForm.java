@@ -336,8 +336,105 @@ public class RecipientRegistrationForm extends javax.swing.JPanel {
 
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // TODO add your handling code here:
-       
+        String gender = "";
+        int age; 
+        if (maleRadioBtn.isSelected() && femaleRadioBtn.isSelected()) {
+             JOptionPane.showMessageDialog(null, "Please only one gender.");
+            return;
+        }
+        if(maleRadioBtn.isSelected()){
+            gender = maleRadioBtn.getText();
+        }else{
+            gender = femaleRadioBtn.getText();
+        }            
+        String nameOnForm = nameTxt.getText();
+        String phone = contactNumberTxt.getText();
+        String emailID = emailIdTxt.getText();
+        String signature = signatureTxt.getText(); 
         
+       if(nameOnForm.equals("") || 
+               gender.equals("") || 
+               signature.equals("") || 
+               emailID.equals("") || 
+               phone.equals("")){
+            JOptionPane.showMessageDialog(null, "Please fill all the details.");
+            return;
+        }    
+         try{
+            age =  Integer.parseInt(ageTxt.getText());          
+            if(age > 80 || age < 18){
+                JOptionPane.showMessageDialog(null , "Please enter correct age.");
+                ageTxt.setText("");
+                 return;
+            }
+           }
+           catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null , "Please add correct age"); 
+            ageTxt.setText("");
+               return;
+           }           
+         //Check Name validity
+        if(!utils.isValidName(nameOnForm) ){
+            JOptionPane.showMessageDialog(null, "Please enter valid name.");
+            return;
+        }    else if (!utils.isValidSign(signature)){
+             JOptionPane.showMessageDialog(null, "Please enter valid sign.");
+            return;
+        }    
+        //check Phone number validity
+        if(!utils.isValidPhoneNo(phone)){
+            JOptionPane.showMessageDialog(null, " Invalid Phone No." + 
+                "Should be 10 digit number between 0-9");
+            return;
+        }
+        //check email ID validity
+        if(!utils.isEmaildIdvalid(emailID)){
+            JOptionPane.showMessageDialog(null, "PLease enter a valid email id");
+            return;
+        }    
+        if(!(corneasRadioBtn.isSelected() || 
+                kidneyRadioBtn.isSelected() ||
+                liverRadioBtn.isSelected() ||
+                heartRadioBtn.isSelected() ||
+                lungRadiodBtn.isSelected() ||                 
+                pancreasRadioBtn.isSelected())){
+            JOptionPane.showMessageDialog(null, "Kindly select an organ for transplantation");
+            return;
+        }
+            
+        Object bloodGroup = bloodGroupDropdown.getSelectedItem();
+
+            String addr = addressTxt.getText();
+            String organType;            
+            if(corneasRadioBtn.isSelected())
+                organType = pancreasRadioBtn.getText();               
+            else if(kidneyRadioBtn.isSelected())
+                organType = kidneyRadioBtn.getText();
+            else if(heartRadioBtn.isSelected())
+                organType = heartRadioBtn.getText();               
+            else if(lungRadiodBtn.isSelected())
+                organType = lungRadiodBtn.getText();
+            else if(liverRadioBtn.isSelected())
+                organType = liverRadioBtn.getText();
+            else 
+                organType = corneasRadioBtn.getText();            
+            if(organization != null && organization.getRecipientDirectory() != null){
+                organization.getRecipientDirectory().createRecipient(nameOnForm, age, addr, 
+                        phone,emailID, (String) bloodGroup, gender,
+                        signature, organType);
+                JOptionPane.showMessageDialog(null, "You have been registered successfully.");
+                
+                signatureTxt.setText("");
+                nameTxt.setText("");
+                addressTxt.setText("");
+                ageTxt.setText("");
+                emailIdTxt.setText("");
+                contactNumberTxt.setText("");
+                
+                panel.remove(this);
+                CardLayout layout = (CardLayout) panel.getLayout();
+                layout.previous(panel);
+            }
 
     }//GEN-LAST:event_submitBtnActionPerformed
 

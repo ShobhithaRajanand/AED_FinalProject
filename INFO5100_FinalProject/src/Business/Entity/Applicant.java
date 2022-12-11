@@ -11,7 +11,7 @@ package Business.Entity;
  */
 public class Applicant {
     
-   private String applicantName;
+    private String applicantName;
     private String applicantEmailId;
     private boolean choice;
     private String applicantPwd;

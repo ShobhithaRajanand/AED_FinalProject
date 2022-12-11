@@ -10,7 +10,7 @@ package Business.Entity;
  * @author aditi
  */
 public class Recipient extends Person implements Comparable<Recipient>{
-
+    
     private int priorityNo;
     private String organType;
     boolean isDocAssigned;
@@ -57,6 +57,5 @@ public class Recipient extends Person implements Comparable<Recipient>{
     public int compareTo(Recipient o) {
 		return Integer.compare(o.getPriorityNo(), this.getPriorityNo());
 	}
-    
     
 }

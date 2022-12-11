@@ -15,7 +15,6 @@ import java.util.List;
 public class PersonDirectory {
     
     //List to store Person Records
-    
     List<Person> personRecord;
 
     public PersonDirectory() {

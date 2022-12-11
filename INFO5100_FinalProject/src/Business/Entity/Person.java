@@ -11,7 +11,7 @@ package Business.Entity;
  */
 public class Person {
     
-     private String personName;
+    private String personName;
     private int personAge;
     private String personAddress;
     private String personPhoneNo;
@@ -101,6 +101,5 @@ public class Person {
     public void setNetwork(String network) {
         this.network = network;
     }
-
 
 }

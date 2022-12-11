@@ -13,7 +13,6 @@ import java.util.ArrayList;
  *
  * @author aditi
  */
-//corporate
 public class CorporateFundOrg extends Organization {
 
     public CorporateFundOrg() {

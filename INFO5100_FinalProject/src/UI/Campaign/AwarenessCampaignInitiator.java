@@ -32,7 +32,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Amit
+ * @author aditi
  */
 public class AwarenessCampaignInitiator extends javax.swing.JPanel {
 

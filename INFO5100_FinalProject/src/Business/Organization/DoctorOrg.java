@@ -13,7 +13,6 @@ import java.util.ArrayList;
  *
  * @author aditi
  */
-//docorg 
 public class DoctorOrg extends Organization{
 
     public DoctorOrg() {

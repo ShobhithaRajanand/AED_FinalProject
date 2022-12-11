@@ -12,10 +12,9 @@ import java.util.List;
  *
  * @author aditi
  */
-// recipient dir
 public class RecipientDirectory {
     
-     private List<Recipient> recipientRecords;
+    private List<Recipient> recipientRecords;
 
     public RecipientDirectory() {
         this.recipientRecords = new ArrayList();

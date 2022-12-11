@@ -20,6 +20,13 @@ To raise funds in collaboration with the government and corporations.
 4. Funding Work Request 
 	Campaign Enterprise to Funding Enterprise
 
+# Class Diagram
+
+
+# Component Diagram
+![Blank board (1)-1](https://user-images.githubusercontent.com/114352780/206963016-14ff6765-9da3-4122-b3ee-57b72cbafa2c.png)
+
+
 
 # Enterprises
 	1. Hospital 

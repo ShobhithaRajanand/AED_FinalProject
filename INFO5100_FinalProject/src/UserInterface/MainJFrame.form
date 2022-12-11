@@ -120,7 +120,7 @@
                       <Component id="loginBtn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                       <Component id="logoutBtn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="387" max="32767" attributes="0"/>
+                      <EmptySpace pref="259" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -182,7 +182,7 @@
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/UI/Images/organ-donation (2).png"/>
+                  <Image iconType="3" name="/UserInterface/Images/organ-donation (2).png"/>
                 </Property>
               </Properties>
             </Component>
@@ -200,7 +200,7 @@
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/UI/Images/front _image.jpeg"/>
+                  <Image iconType="3" name="/UserInterface/Images/front _image.jpeg"/>
                 </Property>
               </Properties>
               <Constraints>

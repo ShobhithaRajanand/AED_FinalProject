@@ -95,7 +95,7 @@ public class MainJFrame extends javax.swing.JFrame {
         organDonationLbl.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         organDonationLbl.setText("Organ Donation");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/organ-donation (2).png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/organ-donation (2).png"))); // NOI18N
 
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
@@ -150,14 +150,14 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(loginBtn)
                 .addGap(37, 37, 37)
                 .addComponent(logoutBtn)
-                .addContainerGap(387, Short.MAX_VALUE))
+                .addContainerGap(259, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(leftPanel);
 
         rightJPanel.setLayout(new java.awt.CardLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/front _image.jpeg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/front _image.jpeg"))); // NOI18N
         rightJPanel.add(jLabel2, "card2");
 
         jSplitPane1.setRightComponent(rightJPanel);

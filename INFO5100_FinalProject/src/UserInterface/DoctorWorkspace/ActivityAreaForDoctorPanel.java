@@ -148,7 +148,7 @@ public class ActivityAreaForDoctorPanel extends javax.swing.JPanel {
                 markDonorUnfitBtnActionPerformed(evt);
             }
         });
-        add(markDonorUnfitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 300, 210, 60));
+        add(markDonorUnfitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 320, 210, 60));
 
         markDonorFitBtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         markDonorFitBtn.setText("Mark Donor Fit");
@@ -157,7 +157,7 @@ public class ActivityAreaForDoctorPanel extends javax.swing.JPanel {
                 markDonorFitBtnActionPerformed(evt);
             }
         });
-        add(markDonorFitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 200, 60));
+        add(markDonorFitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 200, 60));
 
         labTestsRequestsTable.setBackground(java.awt.SystemColor.info);
         labTestsRequestsTable.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -189,17 +189,17 @@ public class ActivityAreaForDoctorPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(labTestsRequestsTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 900, 120));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, 900, 120));
 
         labTestsRequestsLbl.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labTestsRequestsLbl.setText("Lab Tests Requests:");
-        add(labTestsRequestsLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+        add(labTestsRequestsLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, -1, -1));
 
         priorityDropdown.setBackground(new java.awt.Color(204, 204, 204));
         priorityDropdown.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         priorityDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1- High", "2- Medium", "3- Low" }));
         priorityDropdown.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        add(priorityDropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 70, -1, -1));
+        add(priorityDropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 70, -1, -1));
 
         setPriorityBtn.setBackground(new java.awt.Color(204, 204, 204));
         setPriorityBtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -211,15 +211,15 @@ public class ActivityAreaForDoctorPanel extends javax.swing.JPanel {
                 setPriorityBtnActionPerformed(evt);
             }
         });
-        add(setPriorityBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 70, -1, -1));
+        add(setPriorityBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 70, -1, -1));
 
         enterpriseLbl.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLbl.setText("Enterprise :");
-        add(enterpriseLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, 70));
+        add(enterpriseLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, -1, 70));
 
         enterpriseValueLbl.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseValueLbl.setText("<value>");
-        add(enterpriseValueLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 230, 50));
+        add(enterpriseValueLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, 230, 50));
 
         patientTypeLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         add(patientTypeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 160, 40));
@@ -229,10 +229,10 @@ public class ActivityAreaForDoctorPanel extends javax.swing.JPanel {
 
         testResultsPageLbl.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         testResultsPageLbl.setText("Test Results Page");
-        add(testResultsPageLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, -1, -1));
+        add(testResultsPageLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/activity area for doctor panel gif.gif"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 800, 370));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 440, 800, 370));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed

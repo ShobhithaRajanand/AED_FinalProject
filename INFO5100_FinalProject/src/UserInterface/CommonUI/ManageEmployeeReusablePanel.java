@@ -116,7 +116,7 @@ public class ManageEmployeeReusablePanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(manageEmplyeesTbl);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 960, 170));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 960, 170));
 
         orgEmployeeDropdown.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         orgEmployeeDropdown.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -139,14 +139,14 @@ public class ManageEmployeeReusablePanel extends javax.swing.JPanel {
                 orgEmployeeDropdownActionPerformed(evt);
             }
         });
-        add(orgEmployeeDropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 270, 40));
+        add(orgEmployeeDropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 310, 270, 40));
 
         nameTxt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        add(nameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 360, 270, 40));
+        add(nameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 390, 270, 40));
 
         nameLbl.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         nameLbl.setText("Name:");
-        add(nameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, -1, -1));
+        add(nameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 390, -1, -1));
 
         backBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         backBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/left-arrow-in-circular-button-black-symbol-2.png"))); // NOI18N
@@ -167,7 +167,7 @@ public class ManageEmployeeReusablePanel extends javax.swing.JPanel {
                 addBtnActionPerformed(evt);
             }
         });
-        add(addBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, 160, 40));
+        add(addBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, 160, 40));
 
         manageEmployeesLbl.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         manageEmployeesLbl.setText("Manage Employees");
@@ -184,14 +184,14 @@ public class ManageEmployeeReusablePanel extends javax.swing.JPanel {
 
         organizationDropdownLbl.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         organizationDropdownLbl.setText("Organization:");
-        add(organizationDropdownLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, -1));
+        add(organizationDropdownLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, -1, -1));
 
         filterLbl.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         filterLbl.setText("View By Filter:");
         add(filterLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 30, -1, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/working gif.gif"))); // NOI18N
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, 450, 400));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 320, 450, 400));
     }// </editor-fold>//GEN-END:initComponents
 
     private void orgEmployeeDropdownMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orgEmployeeDropdownMouseClicked

@@ -62,7 +62,7 @@ public class ManageHospitalApplicant extends javax.swing.JPanel {
                 donorBtnActionPerformed(evt);
             }
         });
-        add(donorBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 262, 82));
+        add(donorBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 262, 82));
 
         recipientBtn.setFont(new java.awt.Font("Tahoma", 1, 21)); // NOI18N
         recipientBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/icons8-welfare-32.png"))); // NOI18N
@@ -73,11 +73,12 @@ public class ManageHospitalApplicant extends javax.swing.JPanel {
                 recipientBtnActionPerformed(evt);
             }
         });
-        add(recipientBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 260, 82));
+        add(recipientBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 260, 82));
 
         manageHospitalApplicantsLbl.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        manageHospitalApplicantsLbl.setForeground(new java.awt.Color(255, 255, 255));
         manageHospitalApplicantsLbl.setText("Manage Hospital Applicants");
-        add(manageHospitalApplicantsLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, -1, -1));
+        add(manageHospitalApplicantsLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 50, -1, -1));
 
         DonorValidationRequestsBtn.setFont(new java.awt.Font("Tahoma", 1, 21)); // NOI18N
         DonorValidationRequestsBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/team-management.png"))); // NOI18N
@@ -88,10 +89,10 @@ public class ManageHospitalApplicant extends javax.swing.JPanel {
                 DonorValidationRequestsBtnActionPerformed(evt);
             }
         });
-        add(DonorValidationRequestsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 560, 506, 82));
+        add(DonorValidationRequestsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 190, 506, 82));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/hsop (1).jpg"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 1, 1000, 670));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/hsop (1) (1) (1).jpg"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1830, 890));
     }// </editor-fold>//GEN-END:initComponents
 
     private void donorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_donorBtnActionPerformed

@@ -70,7 +70,7 @@ public class ManageCitiesNetwork extends javax.swing.JPanel {
         manageNetworkLbl = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
-        setBackground(java.awt.SystemColor.activeCaption);
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         citiesNetworkTbl.setBackground(java.awt.SystemColor.info);
@@ -101,7 +101,7 @@ public class ManageCitiesNetwork extends javax.swing.JPanel {
             citiesNetworkTbl.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 480, 528, 121));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 430, 528, 121));
 
         createNewCityNetworkTxt.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         createNewCityNetworkTxt.addActionListener(new java.awt.event.ActionListener() {
@@ -109,12 +109,12 @@ public class ManageCitiesNetwork extends javax.swing.JPanel {
                 createNewCityNetworkTxtActionPerformed(evt);
             }
         });
-        add(createNewCityNetworkTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 528, -1));
+        add(createNewCityNetworkTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 528, -1));
 
         currentNetworksLbl.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         currentNetworksLbl.setForeground(new java.awt.Color(255, 255, 255));
         currentNetworksLbl.setText("Current Networks");
-        add(currentNetworksLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, -1, -1));
+        add(currentNetworksLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, -1, -1));
 
         backBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/left-arrow-in-circular-button-black-symbol-2.png"))); // NOI18N
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -132,12 +132,13 @@ public class ManageCitiesNetwork extends javax.swing.JPanel {
                 submitBtnActionPerformed(evt);
             }
         });
-        add(submitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 270, -1, -1));
+        add(submitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 300, -1, -1));
 
+        createNewCityNetworkLbl.setBackground(new java.awt.Color(0, 0, 0));
         createNewCityNetworkLbl.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         createNewCityNetworkLbl.setForeground(new java.awt.Color(255, 255, 255));
         createNewCityNetworkLbl.setText("Create New City Network");
-        add(createNewCityNetworkLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, -1, -1));
+        add(createNewCityNetworkLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, -1, -1));
 
         deleteBtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         deleteBtn.setText("Delete");
@@ -146,7 +147,7 @@ public class ManageCitiesNetwork extends javax.swing.JPanel {
                 deleteBtnActionPerformed(evt);
             }
         });
-        add(deleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 490, 123, -1));
+        add(deleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 440, 123, -1));
 
         updateBtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         updateBtn.setText("Update");
@@ -155,14 +156,13 @@ public class ManageCitiesNetwork extends javax.swing.JPanel {
                 updateBtnActionPerformed(evt);
             }
         });
-        add(updateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 550, 123, -1));
+        add(updateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 510, 123, -1));
 
         manageNetworkLbl.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        manageNetworkLbl.setForeground(new java.awt.Color(255, 255, 255));
         manageNetworkLbl.setText("Manage Networks");
-        add(manageNetworkLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(326, 37, -1, -1));
+        add(manageNetworkLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 30, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/us-state-map-hd (3).jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/WhatsApp Image 2022-12-10 at 11.42.52 PM.jpeg"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1830, 1020));
     }// </editor-fold>//GEN-END:initComponents
 

@@ -74,7 +74,7 @@ public class OrganizationAdminReusableWorkArea extends javax.swing.JPanel {
                 managePeopleInOrganizationBtnActionPerformed(evt);
             }
         });
-        add(managePeopleInOrganizationBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 570, 40));
+        add(managePeopleInOrganizationBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 350, 570, 40));
 
         manageOrgButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         manageOrgButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/planning.png"))); // NOI18N
@@ -85,15 +85,15 @@ public class OrganizationAdminReusableWorkArea extends javax.swing.JPanel {
                 manageOrgButtonActionPerformed(evt);
             }
         });
-        add(manageOrgButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 570, 40));
+        add(manageOrgButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, 570, 40));
 
         adminLbl.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         adminLbl.setText("Admin :");
-        add(adminLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, -1, -1));
+        add(adminLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, -1, -1));
 
         adminValue.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         adminValue.setText("<value>");
-        add(adminValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 430, -1));
+        add(adminValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, 430, -1));
 
         enterpriseAdminScreenLbl.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         enterpriseAdminScreenLbl.setText("Enterprise Admin Screen");
@@ -108,7 +108,7 @@ public class OrganizationAdminReusableWorkArea extends javax.swing.JPanel {
                 manageUserInOrganizationBtnActionPerformed1(evt);
             }
         });
-        add(manageUserInOrganizationBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, 570, 40));
+        add(manageUserInOrganizationBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 440, 570, 40));
 
         checkRatioBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         checkRatioBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/icons8-analysis-24.png"))); // NOI18N
@@ -118,7 +118,7 @@ public class OrganizationAdminReusableWorkArea extends javax.swing.JPanel {
                 checkRatioBtnActionPerformed(evt);
             }
         });
-        add(checkRatioBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 400, 570, 40));
+        add(checkRatioBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 520, 570, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageUserButtonActionPerformed

@@ -66,14 +66,14 @@ public class ShowingInterestUI extends javax.swing.JPanel {
 
         showingAwarenessLbl.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         showingAwarenessLbl.setText("Showing Awareness Of Organ Donation importance");
-        add(showingAwarenessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, -1, 42));
+        add(showingAwarenessLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, -1, 42));
 
         enterEmailTxtLbl.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterEmailTxtLbl.setText("Enter email ID");
-        add(enterEmailTxtLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, -1, -1));
+        add(enterEmailTxtLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 170, -1, -1));
 
         enterEmailTxt.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        add(enterEmailTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 270, -1));
+        add(enterEmailTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 170, 270, -1));
 
         yesRadioBtn.setBackground(java.awt.SystemColor.controlLtHighlight);
         yesRadioBtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -83,7 +83,7 @@ public class ShowingInterestUI extends javax.swing.JPanel {
                 yesRadioBtnActionPerformed(evt);
             }
         });
-        add(yesRadioBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, -1, -1));
+        add(yesRadioBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 330, -1, -1));
 
         noRadioBtn.setBackground(java.awt.SystemColor.controlLtHighlight);
         noRadioBtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -93,7 +93,7 @@ public class ShowingInterestUI extends javax.swing.JPanel {
                 noRadioBtnActionPerformed(evt);
             }
         });
-        add(noRadioBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, -1, -1));
+        add(noRadioBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 330, -1, -1));
 
         submitBtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         submitBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/icons8-submit-resume-24.png"))); // NOI18N
@@ -103,7 +103,7 @@ public class ShowingInterestUI extends javax.swing.JPanel {
                 submitBtnActionPerformed(evt);
             }
         });
-        add(submitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 200, 60));
+        add(submitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 420, 200, 60));
 
         backBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/left-arrow-in-circular-button-black-symbol-2.png"))); // NOI18N
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +115,7 @@ public class ShowingInterestUI extends javax.swing.JPanel {
 
         wantToBeDonorLbl.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         wantToBeDonorLbl.setText("Do you want to be a donor?");
-        add(wantToBeDonorLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, -1, -1));
+        add(wantToBeDonorLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 270, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void yesRadioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesRadioBtnActionPerformed

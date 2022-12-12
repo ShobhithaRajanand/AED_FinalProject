@@ -107,7 +107,7 @@ public class ManageOrganMatchInitialRoute extends javax.swing.JPanel {
                 .addComponent(matchOrganByDonorAvailabilityBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60)
                 .addComponent(matchOrganByRecipientSeverityBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(684, Short.MAX_VALUE))
+                .addContainerGap(556, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -115,7 +115,7 @@ public class LabAssistantWorkAreaPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(labAssitantWorkTbl);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 1020, 180));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 1020, 180));
 
         appointToMeBtn.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         appointToMeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/icons8-audit-24.png"))); // NOI18N
@@ -126,7 +126,7 @@ public class LabAssistantWorkAreaPanel extends javax.swing.JPanel {
                 appointToMeBtnActionPerformed(evt);
             }
         });
-        add(appointToMeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 240, 60));
+        add(appointToMeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 240, 60));
 
         processBtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         processBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/process.png"))); // NOI18N
@@ -137,14 +137,14 @@ public class LabAssistantWorkAreaPanel extends javax.swing.JPanel {
                 processBtnActionPerformed(evt);
             }
         });
-        add(processBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 270, 220, 60));
+        add(processBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 280, 220, 60));
 
         labAssistantWorkAreaLbl.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         labAssistantWorkAreaLbl.setText("Lab Assistant Work Area");
-        add(labAssistantWorkAreaLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, -1, -1));
+        add(labAssistantWorkAreaLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/lab assistant work area panel gif.gif"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, 800, 420));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 400, 800, 420));
     }// </editor-fold>//GEN-END:initComponents
 
     public void methodToPopulateTableData() {

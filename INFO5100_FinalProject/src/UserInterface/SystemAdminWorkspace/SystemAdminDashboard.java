@@ -199,7 +199,7 @@ public class SystemAdminDashboard extends javax.swing.JPanel {
                 .addComponent(manageDonorRecipientNameBtn)
                 .addGap(37, 37, 37)
                 .addComponent(analysisBtn)
-                .addContainerGap(613, Short.MAX_VALUE))
+                .addContainerGap(485, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(rightButtonsJPanel);
@@ -219,7 +219,7 @@ public class SystemAdminDashboard extends javax.swing.JPanel {
         );
         leftTreeJPanelLayout.setVerticalGroup(
             leftTreeJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1024, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 896, Short.MAX_VALUE)
         );
 
         jSplitPane1.setLeftComponent(leftTreeJPanel);
@@ -232,7 +232,7 @@ public class SystemAdminDashboard extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 896, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
